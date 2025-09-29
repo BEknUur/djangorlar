@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cnt Page</title>
+</head>
+<body>
+    <button id="increment-btn">click me</button>
+    <buttin id="reset-btn">reset</button>
+
+        <h2 id ="cnt">CLicks count :{{count}}</h2>
+
+
+       <script> 
+        const cnt=document.getElementById("cnt")
+        document.getElementById("increment-btn").addEventListener("click",()=>{
+            fetch("/count/",{method:"POST"}).then(res =>res.text()).then(data=>{cnt.textContent=`Clicks count :${data}`})
+        });
+
+        docoument.getElementById("reset-btn").addEventListener("click",()=>{
+            fetch("/rest/",method="DELETE").then(res=>res.text()).then(data=>{cnt.textContent=`Clicks count :${data}`})
+        })
+       </script> 
+</body>
+</html> 

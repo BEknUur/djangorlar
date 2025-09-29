@@ -1,19 +1,22 @@
-from pathlib import Path
-
+#import python modules
 import os 
-from djangorlar.conf import *
+
+#project modules 
+from settings.conf  import * 
 
 
-# path 
+
+# ----------------------------------------------
+# Path
+#
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-WSGI_APPLICATION = 'djangorlar.wsgi.application'
-ASGI_APPLICATION = 'djangorlar.asgi.application'
-ROOT_URLCONF = 'djangorlar.urls'
+ROOT_URLCONF='settings.urls'
+WSGI_APPLICATION='settings.wsgi.application'
 
 
+# APPS 
 
-#app
 
 DJANGO_AND_THIRD_PARTY_APPS = [
     'django.contrib.admin',
@@ -23,15 +26,16 @@ DJANGO_AND_THIRD_PARTY_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-PROJECT_APPS= []
+
+PROJECT_APPS=[
+
+]
 
 INSTALLED_APPS = DJANGO_AND_THIRD_PARTY_APPS + PROJECT_APPS
 
 
 
-
-#middleware,templates,validators
-
+#miidleware 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -43,6 +47,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+
+#templates 
 
 
 TEMPLATES = [
@@ -61,6 +68,7 @@ TEMPLATES = [
     },
 ]
 
+#auth password validators 
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -88,13 +96,16 @@ USE_I18N = True
 
 USE_TZ = True
 
+#static files 
 
 
-#static media files
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-MEDIA_URL = "media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_CONF=os.path.join(BASE_DIR, 'static')
+
+#media files
+MEDIA_URL='/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
+
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
