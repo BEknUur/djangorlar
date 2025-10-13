@@ -1,20 +1,21 @@
-from pathlib import Path
+# Python modules
+import os
 
-import os 
-from djangorlar.conf import *
+# Project modules
+from settings.conf import *  # noqa: F403
 
 
-# path 
+# ----------------------------------------------
+# Path
+#
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT_URLCONF = 'settings.urls'
+WSGI_APPLICATION = 'settings.wsgi.application'
+ASGI_APPLICATION = "settings.asgi.application"
 
-WSGI_APPLICATION = 'djangorlar.wsgi.application'
-ASGI_APPLICATION = 'djangorlar.asgi.application'
-ROOT_URLCONF = 'djangorlar.urls'
-
-
-
-#app
-
+# ----------------------------------------------
+# Apps
+#
 DJANGO_AND_THIRD_PARTY_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -23,16 +24,15 @@ DJANGO_AND_THIRD_PARTY_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-PROJECT_APPS= []
-
+PROJECT_APPS = [
+    "apps.tasks.apps.TasksConfig",
+    "apps.abstracts.apps.AbstractsConfig",
+]
 INSTALLED_APPS = DJANGO_AND_THIRD_PARTY_APPS + PROJECT_APPS
 
-
-
-
-#middleware,templates,validators
-
-
+# ----------------------------------------------
+# Middleware | Templates | Validators
+#
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -42,9 +42,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -60,8 +57,6 @@ TEMPLATES = [
         },
     },
 ]
-
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -77,21 +72,18 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-#internationalization
-
+# ----------------------------------------------
+# Internationalization
+#
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
-
-
-#static media files
-STATIC_URL = 'static/'
+# ----------------------------------------------
+# Static | Media
+#
+STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = "media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
