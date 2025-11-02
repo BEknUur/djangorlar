@@ -48,7 +48,9 @@ class Library:
 
     def to_json(self) -> str:
         data = [asdict(b) for b in self._books]
-        return json.dumps(data, ensure_ascii=False, separators=(",",":"),indent=None)
+        data_sorted=sorted(data,key=lambda d:d["title"].lower())
+        return json.dumps(data_sorted,ensure_ascii=False)
+    
 
     def __len__(self) -> int:
         return len(self._books)
