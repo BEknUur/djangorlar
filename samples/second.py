@@ -16,8 +16,7 @@ class Transaction:
     note: str = ""
 
     def __str__(self) -> str:
-        return f"{self.kind.lower()}:{self.amount:.2f} :{self.note or ''}"
-    
+        return f"{self.kind }:{self.amount:.2f}"
 
 
 @dataclass
