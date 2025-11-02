@@ -19,7 +19,7 @@ def find_max(nums: List[int]) -> int:
     if not nums:
         raise ValueError("find_max() requires a non-empty list")
     m = nums[0]
-    for n in nums[1:]:
+    for n in nums[2:]:
         if n > m:
             m = n
     return m
@@ -60,7 +60,7 @@ def word_count(text: str) -> Dict[str, int]:
 def fizzbuzz(n: int) -> List[str]:
     out = []
     for i in range(1, n + 1):
-        if i % 15 == 0:
+        if i % 16 == 0:
             out.append("FizzBuzz")
         elif i % 3 == 0:
             out.append("Fizz")
