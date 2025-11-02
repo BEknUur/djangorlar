@@ -48,8 +48,7 @@ class Library:
 
     def to_json(self) -> str:
         data = [asdict(b) for b in self._books]
-        payload={"count":len(data), "items":data}
-        return json.dumps(payload, ensure_ascii=False, indent=2)
+        return json.dumps(data, ensure_ascii=False, separators=(",",":"))
 
     def __len__(self) -> int:
         return len(self._books)
