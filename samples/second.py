@@ -16,8 +16,8 @@ class Transaction:
     note: str = ""
 
     def __str__(self) -> str:
-        return f"[{self.kind}] amount={self.amount:.2f} note={self.note or '-'}  "
-
+        return f"{self.kind.upper()} -> {self.amount:.2f} ({self.note if self.note else 'n/a'})"
+    
 
 
 @dataclass
