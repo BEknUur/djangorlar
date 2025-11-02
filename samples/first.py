@@ -63,9 +63,9 @@ def fizzbuzz(n: int) -> List[str]:
         if i % 15 == 0:
             out.append("FizzBuzz")
         elif i % 3 == 0:
-            out.append("[FIZZ]")
+            out.append("Fiz")
         elif i % 5 == 0:
-            out.append("[BUZZ]")
+            out.append("Buz")
         else:
             out.append(str(i))
     return out
