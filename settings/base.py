@@ -27,11 +27,16 @@ DJANGO_AND_THIRD_PARTY_APPS = [
 PROJECT_APPS = [
     "apps.tasks.apps.TasksConfig",
     "apps.abstracts.apps.AbstractsConfig",
-    "apps.tasks",
-    "apps.users",
-    "apps.abstract"
+    "apps.users.apps.UsersConfig"
+    
 ]
 INSTALLED_APPS = DJANGO_AND_THIRD_PARTY_APPS + PROJECT_APPS
+
+
+#CUSTOM User Model 
+
+
+AUTH_USER_MODEL = 'users.CustomUser'
 
 # ----------------------------------------------
 # Middleware | Templates | Validators

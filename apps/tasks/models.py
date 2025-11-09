@@ -11,7 +11,7 @@ from django.db.models import (
     PROTECT,
     CASCADE,
 )
-from django.contrib.auth.models import User
+from django.conf import settings
 
 # Project modules
 from apps.abstracts.models import AbstractBaseModel
@@ -28,12 +28,12 @@ class Project(AbstractBaseModel):
         max_length=NAME_MAX_LEN,
     )
     author = ForeignKey(
-        to=User,
+        to=settings.AUTH_USER_MODEL,
         on_delete=PROTECT,
         related_name="owned_projects",
     )
     users = ManyToManyField(
-        to=User,
+        to=settings.AUTH_USER_MODEL,
         blank=True,
         related_name="joined_projects",
     )
@@ -84,7 +84,7 @@ class Task(AbstractBaseModel):
       
     )
     assigness=ManyToManyField(
-        to=User, 
+        to=settings.AUTH_USER_MODEL, 
         through='UserTask', 
         through_fields=('task','user'),
         blank=True,
@@ -106,7 +106,7 @@ class UserTask(AbstractBaseModel):
         on_delete=CASCADE,
     )
     user = ForeignKey(
-        to=User,
+        to=settings.AUTH_USER_MODEL,
         on_delete=CASCADE,
     )
 
