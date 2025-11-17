@@ -1,3 +1,3 @@
-https://github.com/BEknUur/djangorlar/tree/practice-6-main
 
-https://github.com/BEknUur/djangorlar/tree/practice-6-customusers
+
+https://github.com/BEknUur/djangorlar/tree/practice-7-orm
