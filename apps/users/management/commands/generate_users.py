@@ -65,7 +65,7 @@ class Command(BaseCommand):
             user = CustomUser(
                 email=email,
                 fullname=f"{fake.first_name()}_{fake.last_name()}_{i}",
-                username=fake.user_name(),
+                username=fake.unique.user_name(),
                 first_name=fake.first_name(),
                 last_name=fake.last_name(),
                 phone=fake.phone_number(),
