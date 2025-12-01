@@ -4,8 +4,15 @@ from typing import Any
 # from datetime import datetime, timezone
 
 # Django modules
-from django.db.models import Model, DateTimeField
+from django.db.models import Model, DateTimeField,Manager
 from django.utils import timezone as django_timezone
+
+
+class SoftDeleteManager(Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(deleted_at__isnull=True)
+
+
 
 class AbstractBaseModel(Model):
     """
@@ -14,6 +21,10 @@ class AbstractBaseModel(Model):
     created_at=DateTimeField(auto_now_add=True)
     updated_at=DateTimeField(auto_now=True)
     deleted_at=DateTimeField(null=True,blank=True)
+
+    objects=SoftDeleteManager()
+    all_objects=Manager()
+    
 
     class Meta:
         """Meta class for AbstractBaseModel."""
